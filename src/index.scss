@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+$navbar-bg-color: rgb(76, 51, 152);
+$bg-color: #fafafa;
+$navbar-text-color: #dcdcff;
+$color-black: #191919;
+$color-white: #fff;
+$color-gray: #697488;
+$color-primary: #5d3ebc;
+$color-yellow: #ffd300;
+
+.Container {
+  display: grid;
+  grid-template: auto / 1fr;
+  grid-template-areas:
+    "Header "
+    "HeaderSection "
+    "Categories "
+    "Compaign"
+    "Favorites"
+    "MobileApp"
+    "Cards"
+    "Footer";
+  // @media (max-width: 900px) {
+  //   grid-template: auto / 1fr;
+  //   grid-template-areas:
+  //     "Header "
+  //     "Categories "
+  //     "HeaderSection "
+  //     "Compaign"
+  //     "Favorites"
+  //     "MobileApp"
+  //     "Cards"
+  //     "Footer";
+  // }
+  > div {
+    padding: 0 4%;
+    @media (max-width: 1024px) {
+      padding: 0 1.9%;
+    }
+  }
+
+  .Header {
+    background: $navbar-bg-color;
+    grid-area: Header;
+    height: 45px;
+
+    nav {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      ul:first-child {
+        display: flex;
+        align-items: center;
+
+        li {
+          margin-top: 10px;
+          // padding: 12px 20px;
+          border-radius: 6px 6px 0 0;
+          transition: 100ms background-color;
+
+          margin-right: 1px;
+          a {
+            height: 100%;
+            filter: brightness(5%) invert(90%) sepia(72%) saturate(3333%)
+              hue-rotate(180deg) contrast(102%);
+            img {
+              height: 40px;
+              padding: 12px 20px;
+            }
+          }
+          &.active {
+            background: $color-primary;
+            a {
+              filter: none;
+            }
+          }
+          &:hover {
+            background: $color-primary;
+          }
+        }
+      }
+      ul:last-child {
+        display: flex;
+        align-items: center;
+        li {
+          button {
+            height: 100%;
+            padding: 12px 18px;
+            font-size: 14px;
+            color: $navbar-text-color;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            gap: 10px;
+            .icon {
+              font-size: 17px;
+            }
+            @media (max-width: 1024px) {
+              padding: 12px 16px;
+              span {
+                display: none;
+              }
+            }
+          }
+          a {
+            padding: 12px 18px;
+            font-size: 14px;
+            color: $navbar-text-color;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            .icon {
+              font-size: 16px;
+            }
+            @media (max-width: 1024px) {
+              padding: 12px 15px;
+              span {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .HeaderSection {
+    background: blue;
+    grid-area: HeaderSection;
+    height: 500px;
+  }
+
+  .Categories {
+    background: yellow;
+    grid-area: Categories;
+    height: 310px;
+  }
+
+  .Compaign {
+    background: yellowgreen;
+    grid-area: Compaign;
+    height: 300px;
+  }
+
+  .Favorites {
+    background: goldenrod;
+    grid-area: Favorites;
+    height: 505px;
+  }
+
+  .MobileApp {
+    background: red;
+    grid-area: MobileApp;
+    height: 312px;
+  }
+
+  .Cards {
+    background: blue;
+    grid-area: Cards;
+    height: 353px;
+  }
+
+  .Footer {
+    background: yellow;
+    grid-area: Footer;
+    height: 400px;
+  }
+}
