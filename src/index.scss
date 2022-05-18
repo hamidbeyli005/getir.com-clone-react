@@ -15,10 +15,16 @@ $color-white: #fff;
 $color-gray: #697488;
 $color-primary: #5d3ebc;
 $color-yellow: #ffd300;
+$color-red: #ff0000;
+$invalid-color: #c40000;
+$border-color: rgb(223, 222, 226);
+$placeholder-color: rgb(25, 25, 25);
 
 .Container {
+  overflow: hidden;
+
   display: grid;
-  grid-template: auto / 1fr;
+  grid-template: auto / auto;
   grid-template-areas:
     "Header "
     "HeaderSection "
@@ -41,6 +47,7 @@ $color-yellow: #ffd300;
   //     "Footer";
   // }
   > div {
+    width: 100vw;
     padding: 0 4%;
     @media (max-width: 1024px) {
       padding: 0 1.9%;
@@ -51,6 +58,7 @@ $color-yellow: #ffd300;
     background: $navbar-bg-color;
     grid-area: Header;
     height: 45px;
+    overflow-y: hidden;
 
     nav {
       height: 100%;
@@ -139,11 +147,180 @@ $color-yellow: #ffd300;
   }
 
   .HeaderSection {
-    background: blue;
+    padding: 0;
     grid-area: HeaderSection;
     height: 500px;
+    width: 100vw;
+    position: relative;
+
+    > .gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 500px;
+      width: 100vw;
+      background: linear-gradient(
+        90deg,
+        $color-primary 0%,
+        rgba(93, 62, 188, 0) 100%
+      );
+      opacity: 1;
+      z-index: 5;
+    }
+    > .left {
+      position: absolute;
+      z-index: 16;
+      top: 50%;
+      left: 4%;
+      transform: translateY(-50%);
+      > img {
+        height: 180px;
+        width: 180px;
+      }
+      > h1 {
+        font-size: 36px;
+        line-height: 40px;
+        color: $color-white;
+        width: 350px;
+        margin-bottom: 4px;
+        margin-top: 41px;
+      }
+    }
+    > .right {
+      position: absolute;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $bg-color;
+      width: 400px;
+      z-index: 10;
+      border-radius: 6px;
+      padding: 24px;
+      > h5 {
+        text-align: center;
+        font-weight: 600;
+        line-height: 22px;
+        font-size: 17px;
+        color: $color-primary;
+        margin-bottom: 14px;
+      }
+      > form {
+        .top {
+          height: 52px;
+          display: flex;
+          gap: 8px;
+          margin-bottom: 7px;
+          div {
+            padding-bottom: 0;
+            > button {
+              height: 100%;
+              border: 2px solid $border-color;
+            }
+          }
+          label {
+            position: relative;
+            > input {
+              border-radius: 4px;
+              width: 100%;
+              border: 2px solid $border-color;
+              outline: none;
+              height: 100%;
+              line-height: 24px;
+              padding: 0 40px 0 14px;
+              font-weight: 400;
+              transition: 250ms all;
+              color: $color-black;
+              opacity: 0.8;
+              padding-top: 8px;
+
+              &:focus + span {
+                top: 25%;
+                font-size: 12px;
+                color: $color-primary;
+              }
+              &:focus {
+                caret-color: $color-primary;
+                border: 2px solid $color-primary;
+              }
+              &:hover {
+                border: 2px solid $color-primary;
+              }
+              &.invalid {
+                border: 2px solid $invalid-color;
+              }
+            }
+            > span {
+              position: absolute;
+              transition: 300ms all;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 16px;
+              color: $placeholder-color;
+              opacity: 0.6;
+              font-size: 14px;
+              font-weight: 500;
+              user-select: none;
+              pointer-events: none;
+              &.active {
+                top: 25%;
+                font-size: 12px;
+                color: $color-primary;
+              }
+            }
+            > svg {
+              display: none;
+            }
+            > svg.invalid {
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              transform: translateY(-50%);
+              font-size: 24px;
+              color: $invalid-color;
+            }
+          }
+        }
+        > button {
+          line-height: 16px;
+          padding: 14px 16px;
+          background: $color-yellow;
+          height: 48px;
+          width: 100%;
+          border-radius: 6px;
+          border: none;
+          cursor: pointer;
+          font-weight: 500;
+          color: $color-primary;
+          transition: 300ms all;
+          margin-top: 9px;
+          &:hover {
+            background: $color-primary;
+            color: $color-yellow;
+          }
+        }
+        > div.invalid-message {
+          color: $invalid-color;
+          font-size: 12px;
+          margin: 0 10px 3px 130px;
+          display: none;
+        }
+        > div.invalid {
+          display: block;
+        }
+      }
+    }
+    div {
+      img {
+        height: 500px;
+        object-fit: cover;
+        width: 100vw;
+      }
+    }
   }
 
+
+  
   .Categories {
     background: yellow;
     grid-area: Categories;
