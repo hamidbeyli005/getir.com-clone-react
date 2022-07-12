@@ -21,6 +21,25 @@ $invalid-color: #c40000;
 $border-color: rgb(223, 222, 226);
 $placeholder-color: rgb(25, 25, 25);
 
+#preloader {
+  div {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      g {
+        circle {
+          stroke: $color-primary;
+        }
+        circle:first-child {
+          stroke: $color-yellow;
+        }
+      }
+    }
+  }
+}
+
 .Container {
   overflow: hidden;
   background: $bg-color;
@@ -529,11 +548,9 @@ $placeholder-color: rgb(25, 25, 25);
       position: absolute;
       bottom: -6px;
       right: 0;
-      img{
-          object-fit: cover;
-          
+      img {
+        object-fit: cover;
       }
-      
     }
   }
 
